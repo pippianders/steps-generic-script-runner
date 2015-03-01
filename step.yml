@@ -20,7 +20,7 @@ inputs:
     value: |
       #!/bin/bash
 
-      echo "Hello World"
+      echo "Hello Generic Script Runner!"
     is_expand: false
     is_required: true
   - 
@@ -32,14 +32,35 @@ inputs:
       specify `ruby` or `python`, generally
       if you know the path of the executor you should
       define that, like `/bin/bash`.
+
+      You can even specify an execution command
+      like `go run` instead of just a binary.
     value: "/bin/bash"
     is_expand: false
     is_required: true
   -
-    mapped_to: BASH_SCRIPT_WORKING_DIR
-    title: "Working directory"
+    mapped_to: GENERIC_SCRIPT_RUNNER_WORKING_DIR
+    title: "(optional) Working directory"
     description: |
       This directory will be set as the current working
       directory for the script.
+    is_expand: true
+    is_required: false
+  -
+    mapped_to: GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH
+    title: "(optional) Script file path"
+    description: |
+      Save the specified script content to this path
+      before execution. The file will be removed after
+      the script finishes.
+
+      Generally you don't have to define this but
+      there might be cases where the file's name or path
+      actually matters.
+      For example `go run` only accepts .go files.
+
+      If you specify a relative path then it will be
+      relative to the *working directory* (which you
+      can specify as well).
     is_expand: true
     is_required: false

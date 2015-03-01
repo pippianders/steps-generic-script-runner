@@ -24,6 +24,11 @@ if [ ! -z "${GENERIC_SCRIPT_RUNNER_WORKING_DIR}" ] ; then
 	cd "${GENERIC_SCRIPT_RUNNER_WORKING_DIR}"
 fi
 
+if [ ! -z "${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}" ] ; then
+	echo "-> Script (tmp) save path specified: ${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}"
+	CONFIG_tmp_script_file_path="${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}"
+fi
+
 echo "${GENERIC_SCRIPT_RUNNER_CONTENT}" > "${CONFIG_tmp_script_file_path}"
 
 set +e

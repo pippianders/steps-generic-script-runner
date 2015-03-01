@@ -1,0 +1,45 @@
+name: "Generic Script Runner"
+description: |
+  Define the script and the binary to execute with.
+website: https://github.com/bitrise-io/steps-generic-script-runner
+fork_url: https://github.com/bitrise-io/steps-generic-script-runner
+source:
+  git: https://github.com/bitrise-io/steps-generic-script-runner.git
+host_os_tags:
+  - osx-10.10
+project_type_tags: []
+type_tags:
+  - script
+is_requires_admin_user: true
+inputs:
+  - 
+    mapped_to: GENERIC_SCRIPT_RUNNER_CONTENT
+    title: "Script content"
+    description: |
+      Type your script here.
+    value: |
+      #!/bin/bash
+
+      echo "Hello World"
+    is_expand: false
+    is_required: true
+  - 
+    mapped_to: GENERIC_SCRIPT_RUNNER_BIN
+    title: "Execute with"
+    description: |
+      The executor to be used for running the script.
+      If it's available in the PATH you can just
+      specify `ruby` or `python`, generally
+      if you know the path of the executor you should
+      define that, like `/bin/bash`.
+    value: "/bin/bash"
+    is_expand: false
+    is_required: true
+  -
+    mapped_to: BASH_SCRIPT_WORKING_DIR
+    title: "Working directory"
+    description: |
+      This directory will be set as the current working
+      directory for the script.
+    is_expand: true
+    is_required: false

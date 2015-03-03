@@ -25,7 +25,7 @@ if [ ! -z "${GENERIC_SCRIPT_RUNNER_WORKING_DIR}" ] ; then
 fi
 
 if [ ! -z "${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}" ] ; then
-	echo "-> Script (tmp) save path specified: ${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}"
+	echo "==> Script (tmp) save path specified: ${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}"
 	CONFIG_tmp_script_file_path="${GENERIC_SCRIPT_RUNNER_SCRIPT_TMP_PATH}"
 fi
 
@@ -35,6 +35,10 @@ set +e
 ${GENERIC_SCRIPT_RUNNER_BIN} "${CONFIG_tmp_script_file_path}"
 script_result=$?
 set -e
+
+echo
+echo " (i) Script exit code: ${script_result}"
+echo
 
 rm "${CONFIG_tmp_script_file_path}"
 exit ${script_result}
